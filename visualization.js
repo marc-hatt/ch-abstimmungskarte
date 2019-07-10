@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   d3.json("/cantons.json")
     .then(cantons => {
-      d3.csv("/referendum.csv")
+      d3.csv("/referendum_minarett.csv")
         .then(yesVotes => {
         console.log(cantons)
 
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .on("mouseenter", function(d) {
                     tooltip
                         .style("opacity", 1)
-                        .html(d.properties.name) + (d.properties.ja_anteil);
+                        .html(d.properties.name + d.properties.ja_anteil + d.properties.minarett);
                 })
                 .on("mousemove", function(){
                     tooltip
