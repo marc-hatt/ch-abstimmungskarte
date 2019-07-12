@@ -2,9 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   d3.json("/cantons.json")
     .then(cantons => {
-      d3.csv("/referendum_minarett.csv")
-        .then(yesVotes => {
-        console.log(cantons)
+      d3.csv("/referendum_minarett.csv").then(metaData => {
 
           const width = 800;
           const height = 600;
@@ -44,9 +42,30 @@ document.addEventListener("DOMContentLoaded", () => {
              // .attr("d", d => path(d))
                 .attr("d", d => path(d))
                 .on("mouseenter", function(d) {
+                    const cantonYesVotes = metaData.find(
+                        ja_anteil => ja_anteil.id == d.properties.id
+                    );
+                    const cantonsMinarett = metaData.find(
+                        minarett => minarett.id == d.properties.id
+                    );
                     tooltip
+                        .classed("tooltip", true)
                         .style("opacity", 1)
-                        .html(d.properties.name + d.properties.ja_anteil + d.properties.minarett);
+                        .html(
+                            "<h3>" +
+                            d.properties.name +
+                            "</h3>" +
+                            "<p>" +
+                            "Ja-Stimmenanteil, in %: " +
+                            "<br>" +
+                            cantonYesVotes.ja_anteil +
+                            "</p>" +
+                            "<p>" +
+                            "Anzahl Minarette: " +
+                            "<br>" +
+                            cantonsMinarett.minarett +
+                            "</p>"
+                        );
                 })
                 .on("mousemove", function(){
                     tooltip
@@ -58,9 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
 
               .attr("fill", function(d) {
-                  const cantonsMetaData = yesVotes.find(ja_anteil => ja_anteil.id == d.properties.id)
+                  const cantonsMetaData = metaData.find(ja_anteil => ja_anteil.id == d.properties.id)
 
-                  console.log(cantonsMetaData)
               /*    if(cantonsMetaData.ja_anteil<50) {
                       return "red"
                   }
@@ -71,8 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
               })
               .attr("stroke", "rgba(255,255,255,0.5")
               .attr("stroke-width");
-
-
         })
     })
 })
