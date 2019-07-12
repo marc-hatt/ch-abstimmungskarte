@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Abstimmungskarte</title>
 </head>
+
+
+<style>
+  @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700&display=swap');
+  * {
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: -0.2px;
+  }
+  #root {
+    margin: 0 auto;
+    width: 800px;
+    padding: 40px;
+    margin-top: 50px;
+    background-color: red;
+    border-radius: 10px;
+  }
+
+  body {
+    color: white;
+  }
+</style>
+
+
 <body>
-  <h1>Bundesgesetz über Radio und Fernsehen</h1>
+
+<div id="root">
+  <h1 style="text-align: center;">Eidgenössische Volksabstimmung</br>«Gegen den Bau von Minaretten»</h1>
   <div id="viz"></div>
-  <script src="https://unpkg.com/d3@5.9.7/dist/d3.min.js"></script>
-  <script src="https://unpkg.com/d3-geo@1.11.6/dist/d3-geo.min.js"></script>
-  <script src="./visualization.js"></script>
+  <p><span style="font-weight: 400;">Die Karte zeigt eindrücklich die starke Ablehnung gegen Minarette in der Schweiz. Auch, wenn es zum Zeitpunkt der Abstimmung (2009) nur insgesamt drei in der Schweiz gab. Interessant ist auch, dass Genf, trotz Minarett, stark gegen die Vorlage war.</span></p>
+  <h5>Sources: <span style="font-weight: 400;">Bundesamt für Statistik (https://www.atlas.bfs.admin.ch/maps/12/de/12344_12343_5401_259/20368.html)</span></h5>
+</div>
+
+
+<script src="https://unpkg.com/d3@5.9.7/dist/d3.min.js"></script>
+<script src="https://unpkg.com/d3-geo@1.11.6/dist/d3-geo.min.js"></script>
+<script src="./visualization.js"></script>
 </body>
 </html>

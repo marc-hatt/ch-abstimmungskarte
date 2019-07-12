@@ -13,13 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
               .append("svg")
               .attr("width", width)
               .attr("height", height)
-              .style("background-color", "white");
+              .style("background-color", "red")
+              .style("border-radius", "10px");
+
 
           const projection = d3.geoAlbers()
-              .center([0, 46.7])
+              .center([-0.25, 47])
               .rotate([-9, 0, 0])
               .parallels([40, 50])
-              .scale(12000);
+              .scale(13000);
+
 
           const path = d3.geoPath().projection(projection);
 
@@ -28,11 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 .range(["#d0001b", "#e0513c", "#ee7e5f", "#f7a684", "#fdceaa", "#d0e0af", "#a6c185", "#7da35b", "#538633", "#256900"])
 
             const tooltip = container.append("div")
-                .style("opacity", 0.3)
+                .append("div")
+                .style("opacity", 0)
                 .style("position", "fixed")
-                .style("background", "rgba(255,255,255,0.8)")
-                .style("padding", "0.8rem")
-                .style("pointer-events", "none")
+                .style("background", "rgba(255, 255, 255, 0.85)")
+                .style("padding", "0.2em 1em 0.2em 1em")
+                .style("border", "1px solid rgba(0,0,0,1)")
+                .style("border-radius", "4px")
+                .style("color", "black")
+                .style("pointer-events", "none");
 
             const mycantons = svg
               .selectAll("path")
@@ -87,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   } */
                   return colorScale (cantonsMetaData.ja_anteil)
               })
-              .attr("stroke", "rgba(255,255,255,0.5")
+              .attr("stroke", "black")
               .attr("stroke-width");
         })
     })
