@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const tooltip = container.append("div")
                 .append("div")
                 .style("opacity", 0)
-                .style("position", "fixed")
+                .style("position", "absolute")
                 .style("background", "rgba(255, 255, 255, 0.85)")
                 .style("padding", "0.2em 1em 0.2em 1em")
                 .style("border", "1px solid rgba(0,0,0,1)")
@@ -63,9 +63,9 @@ document.addEventListener("DOMContentLoaded", () => {
                             d.properties.name +
                             "</h3>" +
                             "<p>" +
-                            "Ja-Stimmenanteil, in %: " +
+                            "Ja-Stimmenanteil: " +
                             "<br>" +
-                            cantonYesVotes.ja_anteil +
+                            cantonYesVotes.ja_anteil + "%" +
                             "</p>" +
                             "<p>" +
                             "Anzahl Minarette: " +
